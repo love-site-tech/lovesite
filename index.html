@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Do You Love Me?</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+      overflow:hidden;
+    }
+
+    .container{
+      text-align:center;
+      background:white;
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+      position:relative;
+      width:420px;
+    }
+
+    h1{
+      margin-bottom:30px;
+      color:#ff4d6d;
+      font-size:36px;
+    }
+
+    .buttons{
+      position:relative;
+      height:120px;
+    }
+
+    button{
+      padding:12px 25px;
+      border:none;
+      border-radius:12px;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+      position:absolute;
+    }
+
+    #yesBtn{
+      left:70px;
+      background:#28c76f;
+      color:white;
+    }
+
+    #yesBtn:hover{
+      transform:scale(1.1);
+    }
+
+    #noBtn{
+      right:70px;
+      background:#ff4d4d;
+      color:white;
+    }
+
+    .love-page{
+      display:none;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .love-page h1{
+      color:#ff3366;
+      margin-bottom:20px;
+      animation: pop 1s ease infinite alternate;
+    }
+
+    .love-page img{
+      width:250px;
+      border-radius:20px;
+      box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    @keyframes pop{
+      from{
+        transform:scale(1);
+      }
+      to{
+        transform:scale(1.08);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- First Page -->
+  <div class="container" id="firstPage">
+    <h1>Do you love me? ❤️</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">Me Too 😍</button>
+      <button id="noBtn">Nooo 😅</button>
+    </div>
+  </div>
+
+  <!-- Second Page -->
+  <div class="love-page" id="lovePage">
+    <h1>I Love You Too ❤️</h1>
+
+    <!-- Replace this GIF with any GIF you want -->
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Love GIF">
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    // Moving NO button
+    noBtn.addEventListener("mouseover", () => {
+
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    });
+
+    // YES button click
+    document.getElementById("yesBtn").addEventListener("click", () => {
+
+      document.getElementById("firstPage").style.display = "none";
+      document.getElementById("lovePage").style.display = "flex";
+
+      document.body.style.background =
+        "linear-gradient(135deg,#ff758c,#ff7eb3)";
+    });
+
+  </script>
+
+</body>
+</html>
